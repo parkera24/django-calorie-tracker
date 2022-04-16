@@ -15,9 +15,12 @@ def index(request):
 
     else:
         foods = Food.objects.all()
-    consumed_food = Consume.objects.filter(user=request.user)
-
+        
     return render(request, 'myapp/index.html', {'foods': foods, 'consumed_food': consumed_food})
+
+def new_func(request):
+    consumed_food = Consume.objects.filter(user=request.user)
+    return consumed_food
 
 
 def delete_consume(request, id):
